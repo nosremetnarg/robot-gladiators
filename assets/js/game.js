@@ -13,8 +13,7 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-var promptFight = window.prompt("Would you like to Fight or Skip this battle? Enter 'FIGHT' or 'SKIP' to choose.");
-console.log(promptFight);
+
 
 var fight = function(enemyName) {
  //fight function statements
@@ -22,6 +21,7 @@ var fight = function(enemyName) {
  while(enemyHealth > 0 && playerHealth > 0){
 // Alert users that they are starting the round
 
+var promptFight = window.prompt("Would you like to Fight or Skip this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
 
 
@@ -81,7 +81,8 @@ if (playerHealth <= 0) {
   if (confirmSkip) {
     window.alert(playerName + " has decided to skip this fight. Goodbye!");
     // subtract money from playerMoney for skipping
-    playerMoney = playerMoney - 2;
+    playerMoney = playerMoney - 10;
+    console.log("playerMoney", playerMoney);
   }
   // if no (false), ask question again by running fight() again
   else {
