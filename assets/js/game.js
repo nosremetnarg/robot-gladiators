@@ -10,7 +10,10 @@ var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 10;
 var enemyAttack = 12;
 
+
+
 startGame();
+debugger;
 
 function fight(enemyName) {
   while(enemyHealth > 0 && playerHealth > 0){
@@ -31,8 +34,9 @@ function fight(enemyName) {
         break;
       }
     }
+    
     // remove enemy's health by subtracting the amount set in the playerAttack variable
-    enemyHealth = enemyHealth - playerAttack;
+    enemyHealth = Math.max(0, enemyHealth - playerAttack);
      console.log (playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
      );
     // check enemy's health
@@ -49,7 +53,7 @@ function fight(enemyName) {
        }
 
     // remove player's health by subtracting the amount set in the enemyAttack variable
-    playerHealth = playerHealth - enemyAttack;
+    playerHealth = Math.max(0, playerHealth - enemyAttack);
       console.log(
       enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
       );
@@ -68,9 +72,16 @@ function fight(enemyName) {
   function startGame() {
    // reset player stats
   playerHealth = 100;
-  playerAttack = 55;
-  playerMoney = 10;
+  playerAttack = 20;
+  playerMoney = 100;
   // debugger;
+  // function to generate a random numeric value
+var randomNumber = function() {
+  var value = Math.floor(Math.random() * 21) +40;
+
+  return value;
+  
+}; 
   for(var i = 0; i < enemyNames.length; i++) {
     if (playerHealth > 0) {
       window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
@@ -79,7 +90,11 @@ function fight(enemyName) {
       var pickedEnemyName = enemyNames[i];
 
       // reset enemyHealth before starting new fight
-      enemyHealth = 50;
+      enemyHealth = Math.floor(Math.random() * 21) + 40;
+      enemyHealth = randomNumber;
+      // generate random damage value based on player's attack power
+         
+
 
       // use debugger to pause script from running and check what's going on at the moment in the code
       // debugger;
@@ -107,7 +122,7 @@ function fight(enemyName) {
 
             // increase health and decrease money
             playerHealth = playerHealth + 20;
-             playerMoney = playerMoney - 7;
+             playerMoney = Math.max(0, playerMoney - 10);
           } 
           else {
             window.alert("You don't have enough money!");
@@ -121,7 +136,7 @@ function fight(enemyName) {
 
             // increase attack and decrease money
             playerAttack = playerAttack + 6;
-            playerMoney = playerMoney - 7;
+            playerMoney = Math.max(0, playerMoney - 10);
           } 
           else {
             window.alert("You don't have enough money!");
